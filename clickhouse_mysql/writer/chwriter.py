@@ -74,6 +74,7 @@ class CHWriter(Writer):
             event_converted = self.convert(event)
             for row in event_converted:
                 for key in row.keys():
+                    row[key] = '' if row[key] is None else row[key]
                     # we need to convert Decimal value to str value for suitable for table structure
                     if type(row[key]) == Decimal:
                         row[key] = str(row[key])
